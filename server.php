@@ -17,6 +17,13 @@
     if(empty($password_1)) { array_push($errors, 'Password is required'); }
     if($password_1 != $password_2) { array_push($errors, "Passwords don't match"); }
 
+    $email_check_query = "SELECT * FROM users WHERE email = '$email' LIMIT 1;";
 
+    $result = mysqli_query($db, $email_check_query);
+    $user = mysqli_fetch_assoc($result);
+
+    if ($user) { 
+      array_push($errors, "A user with that e-mail already exists");
+    }
   }
 ?>
