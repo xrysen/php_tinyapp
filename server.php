@@ -25,5 +25,14 @@
     if ($user) { 
       array_push($errors, "A user with that e-mail already exists");
     }
+
+    if (count($errors) == 0) {
+      $password = md5($password_1); // Encrypt password
+      $query = "INSERT INTO users (email, password) VALUES ('$email', '$password');";
+      $mysqli_query($db, $query);
+      $_SESSION['username'] = $email;
+      $_SESSION['success'] = "You are now logged in";
+      header("location: index.php");
+    }
   }
 ?>
