@@ -19,7 +19,7 @@
       <?php include('errors.php'); ?>
       <div class = "form-floating">
         <label for = "email" >Email: </label>
-        <input class = "form-control" type = "text" id = "email" placeholder="Email" value="<?php echo $email; ?>">
+        <input class = "form-control" type = "text" id = "email" name="email" placeholder="Email" value="<?php echo $email; ?>">
       </div>
       <div class = "form-floating">
         <label class = "form-label" for = "password">Password: </label>
@@ -31,7 +31,7 @@
       </div>
       <div class = "form-floating">
         <br />
-        <input type = "submit" class = "btn-primary btn-lg">
+        <input type = "submit" class = "btn-primary btn-lg" name = "reg_user">
       </div>
     </form>
   </main>
