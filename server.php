@@ -20,13 +20,13 @@
     if(empty($password_1)) { array_push($errors, 'Password is required'); }
     if($password_1 != $password_2) { array_push($errors, "Passwords don't match"); }
 
-    $email_check_query = "SELECT * FROM users WHERE email = '$email';";
+    $email_check_query = "SELECT * FROM users WHERE name = '$email';";
 
     $result = $conn->query($email_check_query);
 
-    // if ($result->num_rows > 0) { 
-    //   array_push($errors, "A user with that e-mail already exists");
-    // }
+    if ($result->num_rows > 0) { 
+      array_push($errors, "A user with that e-mail already exists");
+    }
 
     if (count($errors) == 0) {
       $password = md5($password_1); // Encrypt password
